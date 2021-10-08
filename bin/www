@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('dotenv').config();
 let fs              =       require('fs');
 let http            =       require('http');
 let log4js          =       require('log4js');

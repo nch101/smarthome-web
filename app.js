@@ -3,11 +3,16 @@ let express             =       require('express');
 let path                =       require('path');
 let cookieParser        =       require('cookie-parser');
 let log4js              =       require('log4js');
+let mongoose            =       require('mongoose');
+
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true,
+	useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true});
 
 let log                 =       log4js.getLogger('app');
 
 let indexRouter         =       require('./routes/index');
 let usersRouter         =       require('./routes/users');
+let apiRouter           =       require('./routes/api.route');
 
 let app                 =       express();
 
@@ -23,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
