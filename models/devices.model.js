@@ -4,7 +4,7 @@ let Schema              =       mongoose.Schema;
 let device_schema       =       new Schema({
     device_type: {
         type:       String,
-        enum:       ['water-switch', 'door-switch', 'alarm'],
+        enum:       ['water-switch', 'door-switch', 'lamp'],
         required:   true
     },
     device_name: {
@@ -28,6 +28,9 @@ let device_schema       =       new Schema({
     },
     battery_level: {
         type:       Number
+    },
+    status: {
+        type:       String
     }
 });
 

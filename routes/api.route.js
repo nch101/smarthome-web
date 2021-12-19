@@ -8,6 +8,9 @@ router.get('/device',               deviceControllers.get_all_devices);
 router.post('/device',              deviceControllers.create_device);
 router.get('/device/:deviceID',     deviceControllers.get_device);
 router.post('/device/:deviceID',    deviceControllers.modify_device);
+router.post('/device/water/:deviceID', deviceControllers.update_status);
+router.post('/device/door/:deviceID', deviceControllers.update_status);
+router.post('/device/lamp/:deviceID', deviceControllers.update_status);
 router.delete('/device/:deviceID',  deviceControllers.delete_device);
 
 //User

@@ -129,6 +129,41 @@ module.exports      = {
         })
     },
 
+    update_status:      function(req, res) {
+        deviceModel
+        .findByIdAndUpdate(req.params.deviceID, {
+            $set: {
+                status:     req.body.status
+            }
+        })
+        .then((data) => {
+            if (data) {
+                log.info('Update status successfully');
+                return res
+                .status(200)
+                .send(data);
+            }
+            else {
+                log.info('Not found device information');
+                return res
+                .status(404)
+                .send({
+                    status: 'error',
+                    message: 'Not found'
+                })
+            }
+        })
+        .catch((error) => {
+            log.error('Update status error:', error);
+            return res
+            .status(501)
+            .send({
+                status: 'error',
+                message: 'Modify device information error'
+            });
+        })
+    },
+
     delete_device:      function(req, res) {
         deviceModel
         .findByIdAndRemove(req.params.deviceID)
