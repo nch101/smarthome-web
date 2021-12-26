@@ -1,0 +1,3 @@
+[submodule "smarthome-frontend"]
+	path = frontend
+	url = git@github.com:nch101/smarthome-frontend.git
